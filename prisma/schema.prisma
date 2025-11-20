@@ -1,3 +1,5 @@
+// schema.prisma
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -7,24 +9,23 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model cats {
+model Toy {
   id             String    @id @default(auto()) @map("_id") @db.ObjectId
-  adoptionDate   DateTime? @db.Date
-  birthDate      DateTime? @db.Date
-  breed          String?
-  declawed       Boolean?
-  description    String?
-  fosterDate     DateTime? @db.Date
-  fosterDuration Int?
-  location       String?
-  name           String?
-  neutered       Boolean?
-  sex            String?
-  primaryColor   String?
-  secondaryColor String?
-  playfulness    Int?
-  appetite       Int?
-  microchip      Int?
-  isAdopted      Boolean?
-  food           String?
+
+  name           String            // Plush name
+  brand          String            // Brand
+  character      String?           // Character 
+  category       String            // Category
+  primaryColor   String            // Primary Color
+  size           String?           // Size
+
+  purchaseDate   DateTime?         // Purchase Date
+  levelsOfLiking Int?              // Levels of liking (1–10)
+  description    String?           // Description
+  imageURL       String?           // Image URL
+  addedBy        String            // 
+
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
 }
+
